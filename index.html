@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LeatherWorks - Enhanced Gothic Portfolio</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#d68c1c", // Slightly deeper, more metallic amber
+                        "primary-hover": "#b45309",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#020202", // Deepest black
+                        "surface-dark": "#080808", // Very dark charcoal
+                        "surface-accent": "#111111",
+                        charcoal: "#161616",
+                        "border-dark": "#332a20" // Dark brown-grey border
+                    },
+                    fontFamily: {
+                        display: "Space Grotesk",
+                        serif: ["Playfair Display", "serif"],
+                        gothic: ["Cinzel Decorative", "cursive"] // Swapped to Decorative for ornate feel
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    backgroundImage: {
+                        'gothic-pattern': "url('https://www.transparenttextures.com/patterns/black-linen.png')",
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .gothic-shadow {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(214, 140, 28, 0.3);
+        }
+
+        .border-ornate {
+            border: 1px solid rgba(214, 140, 28, 0.2);
+            position: relative;
+        }
+
+        .border-ornate::before,
+        .border-ornate::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid #d68c1c;
+            transition: all 0.3s ease;
+        }
+
+        .border-ornate::before {
+            top: -1px;
+            left: -1px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .border-ornate::after {
+            bottom: -1px;
+            right: -1px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .group:hover .border-ornate::before,
+        .group:hover .border-ornate::after {
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(214, 140, 28, 0.2);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(214, 140, 28, 0.5);
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-gray-300 font-serif selection:bg-primary selection:text-black">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="fixed top-0 left-0 right-0 z-50 bg-[#020202]/95 backdrop-blur-md border-b border-[#221a10]">
+            <div class="flex justify-center w-full">
+                <div class="flex w-full max-w-[1024px] items-center justify-between px-4 py-4 lg:px-10">
+                    <div class="flex items-center gap-3 px-2 py-1">
+                        <div class="flex items-center justify-center text-primary h-8 w-8">
+                            <span
+                                class="material-symbols-outlined text-[28px] drop-shadow-[0_0_8px_rgba(214,140,28,0.4)]">diamond</span>
+                        </div>
+                        <h2 class="text-gray-100 text-2xl font-bold font-gothic tracking-widest uppercase text-glow">
+                            LeatherWorks</h2>
+                    </div>
+                    <div class="hidden md:flex flex-1 justify-end gap-12 items-center">
+                        <div class="flex items-center gap-8">
+                            <a class="text-gray-400 hover:text-primary transition-all text-xs font-serif italic tracking-[0.1em] hover:tracking-[0.2em] duration-500"
+                                href="#story">The Ritual</a>
+                            <a class="text-gray-400 hover:text-primary transition-all text-xs font-serif italic tracking-[0.1em] hover:tracking-[0.2em] duration-500"
+                                href="#gallery">Artifacts</a>
+                        </div>
+                        <a class="relative overflow-hidden group border border-primary/40 px-8 py-2 bg-black/50 hover:bg-primary/10 transition-all duration-500"
+                            href="#shop">
+                            <span
+                                class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></span>
+                            <span
+                                class="text-primary text-xs uppercase font-gothic font-bold tracking-[0.25em] group-hover:text-white transition-colors">Acquire</span>
+                        </a>
+                    </div>
+                    <div class="md:hidden text-primary">
+                        <span class="material-symbols-outlined">menu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-container flex h-full grow flex-col pt-20">
+            <div class="flex flex-1 justify-center">
+                <div class="flex flex-col w-full max-w-[1024px]">
+                    <div class="@container">
+                        <div class="@[480px]:p-6">
+                            <div class="flex min-h-[700px] flex-col gap-8 bg-cover bg-center bg-no-repeat items-center justify-center p-8 relative overflow-hidden group border border-[#221a10] shadow-[0_0_50px_rgba(0,0,0,0.9)]"
+                                data-alt="High resolution view of a leather crafting workbench"
+                                style='background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0%, rgba(2, 2, 2, 1) 95%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDPSoZVfcKbAXKZMpMWnc7qB4h8eVot1aHon2n7vc-K4t9y_WzC43WqS9RJm-Rz1DhMy17ZzhfNTDyfvGtOGuv4KitUS-R0ylhemTlfJHtCAGXCMMpeqa5-NtsEreHS1YaQofhA5RS3wKFHFNUa9jk8rll0OOCqfizUTAZq_dDathPcYHPBh6y-c9Bxy_5arzz2MX4w3G3PBN82Qu6-6K5seYQW4UPaVszMhPYPZbAB5lmKQb9KoumEpQpObN4lz1_M0fvYmQXeJTY");'>
+                                <div
+                                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-linen.png')] opacity-40 z-0 mix-blend-overlay">
+                                </div>
+                                <div class="flex flex-col gap-6 text-center z-10 max-w-[700px] items-center">
+                                    <div class="flex items-center justify-center gap-6 text-primary mb-2 opacity-80">
+                                        <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-primary"></div>
+                                        <span class="uppercase tracking-[0.4em] text-[10px] font-gothic">Est.
+                                            MMXXIV</span>
+                                        <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-primary"></div>
+                                    </div>
+                                    <h1
+                                        class="text-white text-6xl md:text-7xl font-gothic leading-tight tracking-wider drop-shadow-[0_5px_5px_rgba(0,0,0,1)] uppercase">
+                                        Immortal<br /><span class="text-primary/90 text-glow">Leather</span>
+                                    </h1>
+                                    <div class="flex items-center gap-3 text-primary/60 my-2">
+                                        <span class="text-2xl font-gothic">~</span>
+                                        <span class="material-symbols-outlined text-sm">diamond</span>
+                                        <span class="text-2xl font-gothic">~</span>
+                                    </div>
+                                    <h2
+                                        class="text-gray-400 text-lg font-serif italic leading-relaxed md:text-xl max-w-xl mx-auto drop-shadow-md text-center">
+                                        "Forged in shadow. Stitched by hand. Artifacts of darkness that darken with
+                                        time."
+                                    </h2>
+                                </div>
+                                <a class="mt-12 group relative px-10 py-4 overflow-hidden border border-primary/50 text-primary transition-all duration-500 hover:border-primary"
+                                    href="#gallery">
+                                    <div
+                                        class="absolute inset-0 w-0 bg-primary transition-all duration-[250ms] ease-out group-hover:w-full opacity-10">
+                                    </div>
+                                    <span
+                                        class="relative text-sm uppercase font-gothic font-bold tracking-[0.3em] group-hover:text-white transition-colors">Enter
+                                        The Atelier</span>
+                                    <div
+                                        class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-1 justify-center py-20 md:py-32 bg-[#050505] relative border-t border-[#1a1a1a]"
+                id="story">
+                <div
+                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none">
+                </div>
+                <div class="flex flex-col w-full max-w-[1024px] px-6 md:px-12 z-10">
+                    <div class="@container">
+                        <div class="flex flex-col gap-16 @[900px]:flex-row items-center">
+                            <div class="w-full relative p-2 border border-[#222] @[900px]:w-1/2">
+                                <div class="absolute -top-2 -left-2 w-6 h-6 border-t border-l border-primary/40"></div>
+                                <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b border-r border-primary/40">
+                                </div>
+                                <div class="w-full aspect-[4/5] bg-cover bg-center grayscale contrast-125 hover:grayscale-0 transition-all duration-1000 ease-in-out shadow-[0_0_30px_rgba(0,0,0,0.8)]"
+                                    data-alt="Close up detailed shot of artisan hands saddle stitching"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDlgEKT4n1Li_AF7lI569Fi4H7ZTlTUaEhJuM2M94RiJ59FC2yQe5c3Te-5wj0uQP4F55TXr8K00-OO-Xk3Kw8qtxm1GShvEJtAUAyeeGDCnfiBq6f6uxSKikrmiLHfyaJHgX0S1Qn0qdVONLm3v46RcS3c5y9-KhBe4_b4H5dnQtNNYhn5ITY8ufTBRx00elIyVkx1gveWYPphUkgJCydQweQb04NpZr-WUh7bO5OKGFBgENiRMTkzg4jvKOCyRjJWulhywWrw3Gs");'>
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-10 @[900px]:w-1/2 @[900px]:pl-12">
+                                <div class="flex flex-col gap-6 text-left">
+                                    <div class="flex items-center gap-3 text-primary/80">
+                                        <span class="material-symbols-outlined text-lg animate-pulse">skull</span>
+                                        <span class="uppercase tracking-[0.4em] text-[10px] font-bold font-gothic">The
+                                            Ritual</span>
+                                    </div>
+                                    <h2
+                                        class="text-gray-100 text-4xl md:text-5xl font-gothic leading-tight tracking-wide">
+                                        Obsession in<br /><span class="text-gray-500">Every Stitch</span>
+                                    </h2>
+                                    <div class="h-px w-24 bg-gradient-to-r from-primary/60 to-transparent"></div>
+                                    <p class="text-gray-400 text-lg leading-loose font-serif">
+                                        Every artifact begins as raw, unyielding hide. I select each piece by hand,
+                                        seeking the <span class="text-gray-200 italic">scars and grain</span> that tell
+                                        a violent, beautiful story.
+                                        Cut by blade, pierced by awl, and stitched with wax thread in a ritual machines
+                                        cannot replicate.
+                                    </p>
+                                    <p
+                                        class="text-gray-500 text-base leading-relaxed font-sans font-light tracking-wide">
+                                        This is not mere commerce; it is alchemy. In a disposable world, I forge items
+                                        of permanence that will haunt your pocket and age with a dark patina.
+                                    </p>
+                                </div>
+                                <div class="grid grid-cols-2 gap-8 pt-6 border-t border-[#1a1a1a]">
+                                    <div class="flex flex-col gap-2 group cursor-default">
+                                        <span
+                                            class="text-primary font-gothic text-4xl group-hover:text-white transition-colors duration-500">X</span>
+                                        <span
+                                            class="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-bold">Years
+                                            of Craft</span>
+                                    </div>
+                                    <div class="flex flex-col gap-2 group cursor-default">
+                                        <span
+                                            class="text-primary font-gothic text-4xl group-hover:text-white transition-colors duration-500">∞</span>
+                                        <span
+                                            class="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-bold">Lifetime
+                                            Bond</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-1 justify-center py-24 bg-[#080808] border-y border-[#1a1a1a] relative" id="gallery">
+                <div class="absolute top-0 left-0 w-full flex justify-center -translate-y-1/2">
+                    <div
+                        class="bg-[#080808] px-4 text-primary text-2xl font-gothic border border-[#1a1a1a] rounded-full p-2">
+                        ❖</div>
+                </div>
+                <div class="flex flex-col w-full max-w-[1024px] px-6 md:px-12">
+                    <div class="flex flex-col items-center text-center mb-20 relative">
+                        <span
+                            class="text-primary/60 uppercase tracking-[0.5em] text-[10px] font-bold mb-6 font-gothic">The
+                            Artifacts</span>
+                        <h2 class="text-white text-4xl md:text-6xl font-gothic tracking-widest mb-6">Dark Collection
+                        </h2>
+                        <div class="flex items-center gap-4 opacity-50">
+                            <div class="h-px w-16 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+                            <span class="text-primary text-xs font-serif italic">Handmade</span>
+                            <div class="h-px w-16 bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 overflow-x-auto pb-12 snap-x snap-mandatory w-full">
+                        <!-- Item 1 -->
+                        <div class="flex-none w-[300px] md:w-[340px] snap-center flex flex-col group cursor-pointer">
+                            <div
+                                class="relative w-full aspect-[4/5] overflow-hidden bg-[#020202] border-ornate shadow-2xl">
+                                <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                    data-alt="Minimalist vegetable tanned leather cardholder"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz8oClSKyHYbJSf5hOJdFKY4RkUp6jGCJlSz5hy6p8qLnw9jk_TbIr2_qkJ4RWs105frgAu3QzgzpZ2oVzV_rQ5V7XYYUl5OsdJVX7MjwIS-p36-Jx7o7HxgWoB-3zry0IF69oFeqOAa9R0BIC4sBIebDZtOYYajCZ3c01P0nf9_RZL46Aut_CasD_xSjATmSHny9LGB4BiFxlAziPJGYdEa9buUEjVvInJ98Ls9jywYpHQUnwwvv8fPdSPlEuOdIJ45mJjZ3gW-E");'>
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 w-full text-center p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div
+                                        class="mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-sm">change_history</span>
+                                    </div>
+                                    <h3
+                                        class="text-gray-100 text-2xl font-gothic tracking-wide mb-2 group-hover:text-primary transition-colors text-shadow-sm">
+                                        The Specter</h3>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-4">Minimalist • 4
+                                        Souls</p>
+                                    <span
+                                        class="text-primary font-bold text-lg font-serif italic border-t border-primary/20 pt-2 inline-block px-4">$65</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div class="flex-none w-[300px] md:w-[340px] snap-center flex flex-col group cursor-pointer">
+                            <div
+                                class="relative w-full aspect-[4/5] overflow-hidden bg-[#020202] border-ornate shadow-2xl">
+                                <div class="absolute top-4 right-4 z-20 text-primary opacity-80">
+                                    <span class="material-symbols-outlined text-sm">star</span>
+                                </div>
+                                <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                    data-alt="Classic brown bifold leather wallet"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsIMiarQ2l2RSw3ZwoVcACzgwnWCjEpDDXw4YwS5_4u69hjPgkwJKBLyBItZz-kwMAGPbi-2WAohaLb6nDe9Ylhv4CUQw1X4sYPlPywbFlCSi7__UtLMjOnHaHki1fM2JDxCvVSNqCUeUY7kBTSdtYM7ZCsq3NzgAoGzVfHuUvMsN4bu2dOOiT-mjY4uGEw2UCtxkOMLl8GfE6fEkP7lMpF2cUFcbjIl9c1V4CHsUA3lSglHbanJr4SH4mD2n6lbXBP8y037PpPHQ");'>
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 w-full text-center p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div
+                                        class="mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-sm">change_history</span>
+                                    </div>
+                                    <h3
+                                        class="text-gray-100 text-2xl font-gothic tracking-wide mb-2 group-hover:text-primary transition-colors text-shadow-sm">
+                                        The Monolith</h3>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-4">Bifold •
+                                        Italian Grain</p>
+                                    <span
+                                        class="text-primary font-bold text-lg font-serif italic border-t border-primary/20 pt-2 inline-block px-4">$120</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div class="flex-none w-[300px] md:w-[340px] snap-center flex flex-col group cursor-pointer">
+                            <div
+                                class="relative w-full aspect-[4/5] overflow-hidden bg-[#020202] border-ornate shadow-2xl">
+                                <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                    data-alt="Leather notebook cover"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbr-NEEJpEkxQQIO07FCK_g0wH7e0KRZQxRFCOES52lIu1cHESzixT4MEoQzquxZZeFhOGvs8G5zmh8gNrm_rJBELB2lhw7KHMEO_QcPVUAOswf8wcF6-jtl9Zgl1OgXOugHlDcGJJpEirGGI6O0QTxsDpDYt4BNj6udss3vd-eiHZ56AslyM1JR7Bf_XZGV0-DmlxpZLGSOn2JONNAxYKslCZmecjUljrXB7pF-3FTHTOUWHwOTvdWZ8mxoELv0282TAioqFD3Ko");'>
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 w-full text-center p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div
+                                        class="mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-sm">change_history</span>
+                                    </div>
+                                    <h3
+                                        class="text-gray-100 text-2xl font-gothic tracking-wide mb-2 group-hover:text-primary transition-colors text-shadow-sm">
+                                        Grimoire Cover</h3>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-4">Field Notes •
+                                        Brass Snap</p>
+                                    <span
+                                        class="text-primary font-bold text-lg font-serif italic border-t border-primary/20 pt-2 inline-block px-4">$95</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div class="flex-none w-[300px] md:w-[340px] snap-center flex flex-col group cursor-pointer">
+                            <div
+                                class="relative w-full aspect-[4/5] overflow-hidden bg-[#020202] border-ornate shadow-2xl">
+                                <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                    data-alt="Dark leather key organizer"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAz8oClSKyHYbJSf5hOJdFKY4RkUp6jGCJlSz5hy6p8qLnw9jk_TbIr2_qkJ4RWs105frgAu3QzgzpZ2oVzV_rQ5V7XYYUl5OsdJVX7MjwIS-p36-Jx7o7HxgWoB-3zry0IF69oFeqOAa9R0BIC4sBIebDZtOYYajCZ3c01P0nf9_RZL46Aut_CasD_xSjATmSHny9LGB4BiFxlAziPJGYdEa9buUEjVvInJ98Ls9jywYpHQUnwwvv8fPdSPlEuOdIJ45mJjZ3gW-E");'>
+                                </div> <!-- Reusing Image 1 -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 w-full text-center p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div
+                                        class="mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-sm">change_history</span>
+                                    </div>
+                                    <h3
+                                        class="text-gray-100 text-2xl font-gothic tracking-wide mb-2 group-hover:text-primary transition-colors text-shadow-sm">
+                                        Shadow Keeper</h3>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-4">Key Organizer •
+                                        Brass</p>
+                                    <span
+                                        class="text-primary font-bold text-lg font-serif italic border-t border-primary/20 pt-2 inline-block px-4">$45</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Item 5 -->
+                        <div class="flex-none w-[300px] md:w-[340px] snap-center flex flex-col group cursor-pointer">
+                            <div
+                                class="relative w-full aspect-[4/5] overflow-hidden bg-[#020202] border-ornate shadow-2xl">
+                                <div class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                                    data-alt="Long leather strap"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsIMiarQ2l2RSw3ZwoVcACzgwnWCjEpDDXw4YwS5_4u69hjPgkwJKBLyBItZz-kwMAGPbi-2WAohaLb6nDe9Ylhv4CUQw1X4sYPlPywbFlCSi7__UtLMjOnHaHki1fM2JDxCvVSNqCUeUY7kBTSdtYM7ZCsq3NzgAoGzVfHuUvMsN4bu2dOOiT-mjY4uGEw2UCtxkOMLl8GfE6fEkP7lMpF2cUFcbjIl9c1V4CHsUA3lSglHbanJr4SH4mD2n6lbXBP8y037PpPHQ");'>
+                                </div> <!-- Reusing Image 2 -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 left-0 w-full text-center p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div
+                                        class="mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-sm">change_history</span>
+                                    </div>
+                                    <h3
+                                        class="text-gray-100 text-2xl font-gothic tracking-wide mb-2 group-hover:text-primary transition-colors text-shadow-sm">
+                                        Void Strap</h3>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-4">Utility • Heavy
+                                        Duty</p>
+                                    <span
+                                        class="text-primary font-bold text-lg font-serif italic border-t border-primary/20 pt-2 inline-block px-4">$85</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-1 justify-center py-24 bg-[#020202] relative overflow-hidden" id="shop">
+                <div
+                    class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/black-felt.png')]">
+                </div>
+                <div class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#080808] to-transparent z-10">
+                </div>
+                <div class="flex flex-col w-full max-w-[1024px] px-4 md:px-12 relative z-20">
+                    <div
+                        class="bg-[#050505] border border-[#222] p-12 md:p-20 text-center shadow-[0_0_80px_rgba(0,0,0,1)] relative overflow-hidden group">
+                        <div
+                            class="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-primary/30 group-hover:border-primary/60 transition-colors">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-primary/30 group-hover:border-primary/60 transition-colors">
+                        </div>
+                        <div
+                            class="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-primary/30 group-hover:border-primary/60 transition-colors">
+                        </div>
+                        <div
+                            class="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-primary/30 group-hover:border-primary/60 transition-colors">
+                        </div>
+                        <div
+                            class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] bg-primary shadow-[0_0_15px_#d68c1c]">
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-5xl text-primary mb-8 drop-shadow-[0_0_10px_rgba(214,140,28,0.5)]">diamond</span>
+                        <h2 class="text-white text-4xl md:text-6xl font-gothic tracking-widest mb-8 text-glow">Claim
+                            Your Legacy</h2>
+                        <p
+                            class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-serif italic leading-relaxed">
+                            Each piece is summoned into existence upon order. Secure your place in the queue before the
+                            darkness closes in.
+                            <br />
+                            <span
+                                class="inline-flex items-center gap-2 text-primary not-italic text-xs font-sans tracking-[0.2em] mt-6 border border-primary/20 px-4 py-2 uppercase bg-black/40">
+                                <span class="material-symbols-outlined text-sm">hourglass_empty</span>
+                                Forging time: 2-3 weeks
+                            </span>
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center gap-8">
+                            <button
+                                class="group/btn relative overflow-hidden flex items-center justify-center gap-3 bg-primary hover:bg-[#b45309] text-black font-bold py-5 px-10 transition-all min-w-[240px] shadow-[0_0_20px_rgba(214,140,28,0.2)] hover:shadow-[0_0_40px_rgba(214,140,28,0.4)]">
+                                <div
+                                    class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
+                                </div>
+                                <span class="material-symbols-outlined relative z-10">storefront</span>
+                                <span
+                                    class="uppercase tracking-[0.2em] text-sm relative z-10 font-gothic font-bold">Shopify</span>
+                            </button>
+                            <button
+                                class="group/btn relative overflow-hidden flex items-center justify-center gap-3 bg-transparent border border-[#333] hover:border-primary text-gray-400 hover:text-primary font-bold py-5 px-10 transition-all min-w-[240px]">
+                                <span
+                                    class="material-symbols-outlined group-hover/btn:rotate-12 transition-transform">palette</span>
+                                <span class="uppercase tracking-[0.2em] text-sm font-gothic font-bold">Etsy</span>
+                            </button>
+                        </div>
+                        <div
+                            class="mt-16 flex justify-center items-center gap-3 text-[10px] text-gray-600 uppercase tracking-[0.3em]">
+                            <span class="material-symbols-outlined text-xs">lock</span>
+                            Encrypted Transaction
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="flex justify-center bg-[#000] border-t border-[#111] py-16">
+                <div
+                    class="flex w-full max-w-[1024px] flex-col md:flex-row items-center justify-between px-6 md:px-12 gap-10">
+                    <div class="flex flex-col gap-6 items-center md:items-start text-center md:text-left">
+                        <div class="flex items-center gap-3 text-gray-500">
+                            <span class="material-symbols-outlined text-primary/70 text-2xl">diamond</span>
+                            <span
+                                class="text-2xl font-bold font-gothic tracking-[0.2em] text-gray-300">LeatherWorks</span>
+                        </div>
+                        <p class="text-gray-700 text-[10px] uppercase tracking-[0.2em]">© 2023. Handcrafted in the
+                            Shadows of Montana.</p>
+                    </div>
+                    <div class="flex gap-10">
+                        <a class="text-gray-600 hover:text-primary transition-colors uppercase text-[10px] tracking-[0.3em] font-bold"
+                            href="#">Instagram</a>
+                        <a class="text-gray-600 hover:text-primary transition-colors uppercase text-[10px] tracking-[0.3em] font-bold"
+                            href="#">Twitter</a>
+                        <a class="text-gray-600 hover:text-primary transition-colors uppercase text-[10px] tracking-[0.3em] font-bold"
+                            href="#">Contact</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+</body>
+
+</html>
