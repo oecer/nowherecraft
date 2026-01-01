@@ -1,5 +1,5 @@
 /* Nowak Craft - Premium Dark Theme */
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Inter:wght@300;400;600&family=Oswald:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Pirata+One&family=Inter:wght@300;400;600&family=Oswald:wght@300;400;500&display=swap');
 
 :root {
     --bg-dark: #050505;
@@ -15,7 +15,8 @@
     --accent-copper-light: #d49555;
     --accent-copper-dark: #8a5220;
 
-    --font-heading: 'UnifrakturMaguntia', cursive;
+    --font-heading: 'Pirata One', cursive;
+    --font-logo: 'UnifrakturMaguntia', cursive;
     --font-subhead: 'Oswald', sans-serif;
     --font-body: 'Inter', sans-serif;
 
@@ -152,7 +153,7 @@ header {
 }
 
 .logo-text {
-    font-family: var(--font-heading);
+    font-family: var(--font-logo);
     font-size: 1.8rem;
     color: var(--text-primary);
     letter-spacing: 1px;
