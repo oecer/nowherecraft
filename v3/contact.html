@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Nowhere Craft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            letter-spacing: 0.1em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/NOWHERE_yatay_1000px.png" alt="Nowhere Craft Logo" class="brand-logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Philosophy</a></li>
+            <li><a href="products.html">Collections</a></li>
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="nav-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+    <div class="mobile-nav-overlay">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Philosophy</a></li>
+            <li><a href="products.html">Collections</a></li>
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <header class="hero" style="min-height: 50vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="reveal-text">Reach Out</h1>
+                <p class="hero-sub fade-in-up">Questions, custom orders, or just to say hell.</p>
+            </div>
+        </header>
+
+        <section class="section-padding container">
+            <div class="contact-form reveal-on-scroll">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" placeholder="Who are you?">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Where can we reach you?">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="What's on your mind?"></textarea>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </div>
+
+            <div class="center-text" style="margin-top: var(--spacing-lg); color: var(--text-muted);">
+                <p>or email us directly at <a href="mailto:info@nowherecraft.com"
+                        class="accent-text">info@nowherecraft.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section-padding">
+        <div class="container grid-4">
+            <div class="footer-brand">
+                <img src="assets/images/NOWHERE_yatay_1000px.png" alt="Nowhere Craft" class="footer-logo">
+                <p>Tactile goods for the tactile world.</p>
+            </div>
+            <!-- ... -->
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="about.html">Philosophy</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Shipping</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Join the Underground</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email address">
+                    <button type="submit">→</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom center-text">
+            <p>&copy; 2026 Nowhere Craft. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

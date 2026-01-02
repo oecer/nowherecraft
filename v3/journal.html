@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal | Nowhere Craft</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="loading">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="assets/images/NOWHERE_yatay_1000px.png" alt="Nowhere Craft Logo" class="brand-logo">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Philosophy</a></li>
+            <li><a href="products.html">Collections</a></li>
+            <li><a href="journal.html" class="active">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </nav>
+    <div class="mobile-nav-overlay">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Philosophy</a></li>
+            <li><a href="products.html">Collections</a></li>
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <header class="hero" style="min-height: 50vh;">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="reveal-text">Chronicles</h1>
+                <p class="hero-sub fade-in-up">Stories from the workshop and the road.</p>
+            </div>
+        </header>
+
+        <section class="section-padding container">
+            <div class="journal-feed" style="max-width: 800px; margin: 0 auto;">
+                <!-- Article 1 -->
+                <article class="journal-post reveal-on-scroll"
+                    style="margin-bottom: var(--spacing-xl); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color);">
+                    <small style="color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em;">October
+                        12, 2025</small>
+                    <h2 style="margin: var(--spacing-xs) 0;">The Art of Patina</h2>
+                    <div class="placeholder-img" style="height: 300px; margin: var(--spacing-md) 0;"></div>
+                    <p class="body-text">Patina isn't just rust or dirt. It's a record of use. A map of where you've
+                        been. In this piece, we explore how copper and brass age over time, and why we refuse to coat
+                        our metals to stop this natural process.</p>
+                    <a href="#" class="text-link">Read Story <span class="arrow">→</span></a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="journal-post reveal-on-scroll delay-100"
+                    style="margin-bottom: var(--spacing-xl); padding-bottom: var(--spacing-lg); border-bottom: 1px solid var(--border-color);">
+                    <small
+                        style="color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em;">September
+                        28, 2025</small>
+                    <h2 style="margin: var(--spacing-xs) 0;">Riding into the Void</h2>
+                    <p class="body-text">We took the new Saddle Bag prototype on a 1000-mile trip through the desert.
+                        Heat, sand, and vibration. Here is what happened.</p>
+                    <a href="#" class="text-link">Read Story <span class="arrow">→</span></a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section-padding">
+        <div class="container grid-4">
+            <div class="footer-brand">
+                <img src="assets/images/NOWHERE_yatay_1000px.png" alt="Nowhere Craft" class="footer-logo">
+                <p>Tactile goods for the tactile world.</p>
+            </div>
+            <!-- ... -->
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="about.html">Philosophy</a></li>
+                    <li><a href="journal.html">Journal</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Shipping</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Join the Underground</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email address">
+                    <button type="submit">→</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom center-text">
+            <p>&copy; 2026 Nowhere Craft. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
