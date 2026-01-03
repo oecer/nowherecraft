@@ -55,8 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileNav.classList.add('active');
         });
 
-        closeMenuBtn.addEventListener('click', () => {
+        closeMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileNav.classList.remove('active');
+        });
+
+        // Close when clicking empty space in overlay
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.remove('active');
+            }
         });
     }
 
