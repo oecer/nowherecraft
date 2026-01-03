@@ -148,6 +148,33 @@ html {
     letter-spacing: 0.1em;
 }
 
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(2, 2, 2, 0.98);
+    z-index: 49;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.mobile-nav-overlay.active {
+    transform: translateY(0);
+}
+
+.mobile-nav-link {
+    font-size: 1.5rem;
+    color: white;
+    font-family: var(--font-gothic);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
 .nav-link:hover {
     color: var(--color-primary);
     letter-spacing: 0.2em;
@@ -188,9 +215,9 @@ html {
 
 .hero-title {
     color: white;
-    font-size: 3.75rem;
+    font-size: 3rem;
     font-family: var(--font-gothic);
-    line-height: 1.25;
+    line-height: 1.1;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-shadow: 0 5px 5px rgba(0, 0, 0, 1);
