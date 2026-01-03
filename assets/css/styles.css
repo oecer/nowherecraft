@@ -630,7 +630,7 @@ body {
     /* width: 100%; */
     height: 100%;
     object-fit: contain;
-    filter: invert(1) brightness(1.5) drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+    /* filter: invert(1) brightness(1.5) drop-shadow(0 0 12px rgba(255, 255, 255, 0.3)); */
 }
 
 /* Section: The Ritual */
@@ -1053,14 +1053,14 @@ body {
 }
 
 .footer-link-item {
-    color: #4b5563;
-    /* gray-600 */
-    transition: color 0.3s;
+    color: #9ca3af;
+    /* gray-400 */
+    transition: all 0.3s ease;
     text-transform: uppercase;
-    font-size: 0.625rem;
-    /* 10px */
-    letter-spacing: 0.3em;
-    font-weight: 700;
+    font-size: 0.75rem;
+    /* 12px */
+    letter-spacing: 0.25em;
+    font-weight: 600;
 }
 
 .footer-link-item:hover {
@@ -1105,10 +1105,13 @@ body {
 }
 
 .footer-copyright {
-    color: #374151;
-    font-size: 10px;
+    color: #6b7280;
+    /* gray-500 */
+    font-size: 0.75rem;
+    /* 12px */
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
 }
 
 /* Decoration Helpers */
