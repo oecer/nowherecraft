@@ -1082,6 +1082,28 @@ body {
     color: #d1d5db;
 }
 
+.footer-logo-link {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo-link:hover {
+    transform: translateY(-2px);
+}
+
+.footer-brand-img {
+    height: 3rem;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) opacity(0.7);
+    transition: all 0.3s ease;
+}
+
+.footer-logo-link:hover .footer-brand-img {
+    filter: brightness(0) invert(1) opacity(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
 .footer-copyright {
     color: #374151;
     font-size: 10px;
@@ -1118,4 +1140,8 @@ body {
 
 .filter-primary-hover {
     filter: brightness(0) saturate(100%) invert(25%) sepia(99%) saturate(1881%) hue-rotate(23deg) brightness(97%) contrast(93%);
+}
+
+.hero-icon-divider-filter {
+    filter: brightness(0) saturate(100%) invert(65%) sepia(87%) saturate(450%) hue-rotate(355deg) brightness(95%) contrast(92%) opacity(0.6);
 }
