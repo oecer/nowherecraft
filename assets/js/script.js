@@ -29,3 +29,19 @@ tailwind.config = {
         }
     }
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollContainer = document.getElementById('gallery-scroll');
+    const prevBtn = document.getElementById('gallery-prev');
+    const nextBtn = document.getElementById('gallery-next');
+
+    if (scrollContainer && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: -340, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({ left: 340, behavior: 'smooth' });
+        });
+    }
+});
