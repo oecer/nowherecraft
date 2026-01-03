@@ -751,9 +751,11 @@ body {
 }
 
 .ritual-description {
-    color: #9ca3af;
+    /* color: #9ca3afs; */
+    color: #d1d5db;
     font-size: 1.125rem;
     line-height: 2;
+    letter-spacing: 0.07em;
     font-family: var(--font-serif);
 }
 
