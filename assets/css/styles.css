@@ -140,9 +140,9 @@ html {
 }
 
 .nav-link {
-    color: #b8b8b8;
+    color: #d1d5db;
     transition: all 0.5s;
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-family: var(--font-serif);
     /* font-style: italic; */
     letter-spacing: 0.1em;
@@ -289,12 +289,12 @@ html {
 }
 
 .hero-subtitle {
-    color: #9ca3af;
-    font-size: 1.125rem;
+    color: #e5e7eb;
+    font-size: 1.25rem;
     font-family: var(--font-serif);
     font-style: italic;
-    line-height: 1.625;
-    max-width: 36rem;
+    line-height: 1.75;
+    max-width: 42rem;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -500,15 +500,15 @@ html {
 }
 
 .shop-desc {
-    color: #9ca3af;
-    font-size: 1.125rem;
+    color: #d1d5db;
+    font-size: 1.25rem;
     max-width: 42rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 4rem;
-    font-family: var(--font-serif);
-    font-style: italic;
-    line-height: 1.625;
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.75;
 }
 
 @media (min-width: 768px) {
@@ -602,9 +602,11 @@ html {
 /* Body & Layout */
 body {
     background-color: var(--color-bg-dark);
-    color: #d1d5db;
-    /* gray-300 */
-    font-family: var(--font-serif);
+    color: #e5e7eb;
+    /* gray-200 */
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.75;
 }
 
 ::selection {
@@ -783,12 +785,12 @@ body {
 }
 
 .ritual-description {
-    /* color: #9ca3afs; */
-    color: #d1d5db;
-    font-size: 1.125rem;
-    line-height: 2;
-    letter-spacing: 0.07em;
-    font-family: var(--font-serif);
+    color: #f3f4f6;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    font-family: var(--font-sans);
+    font-weight: 300;
 }
 
 .ritual-description span {
@@ -797,9 +799,9 @@ body {
 }
 
 .ritual-subtext {
-    color: #9ca3af;
-    font-size: 1rem;
-    line-height: 1.625;
+    color: #d1d5db;
+    font-size: 1.125rem;
+    line-height: 1.75;
     font-family: var(--font-sans);
     font-weight: 300;
     letter-spacing: 0.025em;
@@ -832,10 +834,10 @@ body {
 }
 
 .ritual-stat-label {
-    font-size: 10px;
-    color: #6b7280;
+    font-size: 0.75rem;
+    color: #9ca3af;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
     font-weight: 700;
 }
 
@@ -1012,10 +1014,10 @@ body {
 }
 
 .artifact-tags {
-    color: #6b7280;
-    font-size: 10px;
+    color: #9ca3af;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
     margin-bottom: 1rem;
 }
 
@@ -1088,7 +1090,7 @@ body {
 }
 
 .footer-link-item {
-    color: #9ca3af;
+    color: #d1d5db;
     /* gray-400 */
     transition: all 0.3s ease;
     text-transform: uppercase;
