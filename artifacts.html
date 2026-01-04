@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nowhere Craft - Artifacts Archive</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@300;400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="assets/js/artifacts.js"></script>
+    <script src="assets/js/script.js"></script>
+    <link href="assets/css/styles.css" rel="stylesheet" />
+    <style>
+        #all-artifacts-grid .artifact-card {
+            width: 100%;
+            flex: initial;
+            scroll-snap-align: none;
+        }
+
+        /* Adjust spacing for the grid page */
+        .page-header {
+            padding-top: 0;
+            padding-bottom: 2rem;
+            text-align: center;
+        }
+
+        #gallery-page {
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="site-header">
+            <div class="header-outer">
+                <div class="header-container">
+                    <a href="index.html" class="logo-container block hover:opacity-80 transition-opacity">
+                        <div class="logo-wrapper">
+                            <img src="assets/images/NOWHERE_2_yatay_240px.png" alt="Nowhere Craft Logo"
+                                class="logo-img filter-text-glow">
+                        </div>
+                    </a>
+                    <div class="header-nav">
+                        <div class="nav-group">
+                            <a class="nav-link" href="index.html#story">The Ritual</a>
+                            <a class="nav-link text-primary" href="artifacts.html">Artifacts</a>
+                        </div>
+                        <a class="group btn-acquire" href="index.html#shop">
+                            <span
+                                class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></span>
+                            <span
+                                class="relative text-sm uppercase font-serif font-bold tracking-[0.25em] group-hover:tracking-[0.3em] transition-all text-primary">Acquire</span>
+                        </a>
+                    </div>
+                    <div class="md:hidden text-primary cursor-pointer border border-primary/30 p-1 rounded"
+                        id="mobile-menu-btn">
+                        <span class="material-symbols-outlined">menu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Overlay -->
+        <div class="mobile-nav-overlay" id="mobile-nav">
+            <button class="absolute top-6 right-6 text-primary p-2" id="close-mobile-menu">
+                <span class="material-symbols-outlined text-3xl">close</span>
+            </button>
+            <a class="mobile-nav-link" href="index.html#story" onclick="closeMobileMenu()">The Ritual</a>
+            <a class="mobile-nav-link text-primary" href="artifacts.html" onclick="closeMobileMenu()">Artifacts</a>
+            <a class="mobile-nav-link" href="index.html#shop" onclick="closeMobileMenu()">Acquire</a>
+        </div>
+
+        <div class="content-spacer">
+            <!-- Background Texture -->
+            <div
+                class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none fixed">
+            </div>
+
+            <div class="section-gallery flex-col" id="gallery-page">
+
+                <div class="page-header">
+                    <!-- Breadcrumbs -->
+                    <nav
+                        class="flex justify-center items-center text-xs uppercase tracking-widest text-gray-500 mb-8 space-x-2 font-serif opacity-60">
+                        <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                        <span>/</span>
+                        <span class="text-primary">Artifacts</span>
+                    </nav>
+
+                    <div class="gallery-badge-icon mx-auto mb-4">
+                        <img src="assets/images/Icon_512x512px.png" alt="Nowhere Craft Icon"
+                            class="w-12 h-12 object-contain filter-primary opacity-80 mx-auto">
+                    </div>
+                    <span class="gallery-badge filter-text-glow">The Complete Archives</span>
+                    <h2 class="gallery-title mt-4">All Artifacts</h2>
+
+                    <!-- Search & Filter -->
+                    <div class="w-full max-w-4xl mx-auto mt-12 px-4">
+                        <div class="search-input-wrapper">
+                            <input type="text" id="artifact-search" class="search-input"
+                                placeholder="Search archives...">
+                            <span
+                                class="material-symbols-outlined absolute right-0 top-2 text-gray-500 pointer-events-none">search</span>
+                        </div>
+
+                        <div id="artifact-filters" class="filter-bar-container">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="gallery-divider mx-auto mt-6 justify-center">
+                        <span class="gallery-subtitle uppercase tracking-[0.25em] md:text-sm filter-text-glow">
+                            Showing <span id="artifact-count" class="text-primary">--</span> Items
+                        </span>
+                    </div>
+                </div>
+
+                <div class="max-w-[1400px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+                    <div id="all-artifacts-grid"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 pb-20 justify-items-center">
+                        <!-- Artifacts will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="flex justify-center pb-20">
+                    <a href="index.html"
+                        class="group relative px-8 py-3 overflow-hidden border border-primary/30 text-primary transition-all duration-300 hover:border-primary hover:bg-primary/5">
+                        <span class="material-symbols-outlined align-middle mr-2 text-sm">west</span>
+                        <span
+                            class="relative text-sm uppercase font-serif font-bold tracking-[0.2em] group-hover:tracking-[0.3em] transition-all align-middle">Return
+                            to Home</span>
+                    </a>
+                </div>
+            </div>
+
+            <footer class="site-footer mt-auto">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-brand-top">
+                            <a href="index.html" class="footer-logo-link">
+                                <img src="assets/images/NOWHERE_2_yatay_240px.png" alt="Nowhere Craft Logo"
+                                    class="footer-brand-img" />
+                            </a>
+                        </div>
+                        <p class="footer-copyright">© 2023. Handcrafted in the Shadows of Nowhere.</p>
+                    </div>
+                    <div class="footer-links">
+                        <a class="footer-link-item" href="#">Instagram</a>
+                        <a class="footer-link-item" href="#">Twitter</a>
+                        <a class="footer-link-item" href="#">Contact</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Back To Top -->
+    <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        aria-label="Back to top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <!-- Artifact Quick View Modal -->
+    <div id="artifact-modal" class="modal-overlay invisible opacity-0">
+        <div class="modal-content">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 z-50 p-2 text-white/50 hover:text-primary transition-colors bg-black/50 backdrop-blur rounded-full">
+                <span class="material-symbols-outlined text-2xl">close</span>
+            </button>
+            <div id="modal-content-body" class="h-full">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Logic is now mainly in artifacts.js, but we add the scroll listener here
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

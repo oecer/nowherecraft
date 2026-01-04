@@ -36,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('gallery-next');
 
     if (scrollContainer && prevBtn && nextBtn) {
+        // Render artifacts if the function exists
+        if (typeof renderArtifacts === 'function') {
+            console.log('Rendering artifacts...');
+            renderArtifacts('gallery-scroll', 10);
+        }
+
         prevBtn.addEventListener('click', () => {
             scrollContainer.scrollBy({ left: -340, behavior: 'smooth' });
         });
