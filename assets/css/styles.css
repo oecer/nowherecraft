@@ -140,9 +140,9 @@ html {
 }
 
 .nav-link {
-    color: #9ca3af;
+    color: #b8b8b8;
     transition: all 0.5s;
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-family: var(--font-serif);
     font-style: italic;
     letter-spacing: 0.1em;
