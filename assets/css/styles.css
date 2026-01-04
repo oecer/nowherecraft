@@ -1024,7 +1024,7 @@ body {
     font-weight: 700;
     font-size: 1.125rem;
     font-family: var(--font-serif);
-    font-style: italic;
+    /* font-style: italic; */
     border-top: 1px solid rgba(214, 140, 28, 0.2);
     padding-top: 0.5rem;
     display: inline-block;
