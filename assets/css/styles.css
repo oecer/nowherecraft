@@ -1183,3 +1183,8 @@ body {
 .hero-icon-divider-filter {
     filter: brightness(0) saturate(100%) invert(65%) sepia(87%) saturate(450%) hue-rotate(355deg) brightness(95%) contrast(92%) opacity(0.6);
 }
+
+.filter-text-glow {
+    filter: brightness(0) saturate(100%) invert(71%) sepia(91%) saturate(2951%) hue-rotate(357deg) brightness(92%) contrast(81%);
+    /* filter: drop-shadow(0 0 10px #d68c1c4d); */
+}
