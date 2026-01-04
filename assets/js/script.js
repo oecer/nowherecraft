@@ -31,6 +31,11 @@ tailwind.config = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Render Components first if available
+    if (typeof NowhereComponents !== 'undefined') {
+        NowhereComponents.render();
+    }
+
     const scrollContainer = document.getElementById('gallery-scroll');
     const prevBtn = document.getElementById('gallery-prev');
     const nextBtn = document.getElementById('gallery-next');
