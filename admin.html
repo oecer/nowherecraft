@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nowhere Craft - Artifact Generator</title>
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            font-family: 'Space Grotesk', sans-serif;
+            padding: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-label {
+            display: block;
+            color: var(--color-primary);
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .input-field {
+            width: 100%;
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 2px;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--color-primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-generate {
+            background-color: var(--color-primary);
+            color: black;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 1rem 2rem;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-generate:hover {
+            background-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        #output-area {
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            color: #a3e635;
+            /* lime-400 */
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center">
+
+    <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Input Section -->
+        <div>
+            <div class="mb-8 border-b border-white/10 pb-4">
+                <h1 class="text-3xl font-gothic text-primary mb-2">Artifact Generator</h1>
+                <p class="text-white/60 text-sm">Fill in the details to forge a new JSON entry.</p>
+            </div>
+
+            <form id="generator-form">
+                <div class="input-group">
+                    <label class="input-label">Artifact ID</label>
+                    <input type="text" id="id" class="input-field" placeholder="e.g. 2901">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Title</label>
+                    <input type="text" id="title" class="input-field" placeholder="e.g. Midnight Gator Wallet">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="input-group">
+                        <label class="input-label">Category</label>
+                        <select id="category" class="input-field">
+                            <option value="Wallet">Wallet</option>
+                            <option value="Cardholder">Cardholder</option>
+                            <option value="Keyholder">Keyholder</option>
+                            <option value="Bundle">Bundle</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">Price</label>
+                        <input type="text" id="price" class="input-field" value="$TBD">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Image Filenames</label>
+                    <textarea id="images" class="input-field h-24"
+                        placeholder="One per line, e.g.&#10;assets/images/prducts/1000022365.jpg&#10;assets/images/prducts/1000022365_2.jpg"></textarea>
+                    <p class="text-xs text-white/40 mt-2">Enter full paths relative to root. One per line.</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Tags</label>
+                    <input type="text" id="tags" class="input-field" value="Genuine Leather • Handcrafted">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Description</label>
+                    <textarea id="description" class="input-field h-32"
+                        placeholder="Describe the artifact..."></textarea>
+                </div>
+
+                <div class="input-group bg-white/5 p-4 rounded border border-white/10">
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" id="spotlight"
+                            class="w-5 h-5 text-primary rounded bg-[#0a0a0a] border-white/30 focus:ring-primary focus:ring-offset-black">
+                        <div>
+                            <label for="spotlight" class="block font-serif font-bold text-white">Spotlight
+                                Artifact</label>
+                            <p class="text-xs text-white/50">If checked, this item will be featured in the Hero/Home
+                                selection.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-generate">Forge JSON</button>
+            </form>
+        </div>
+
+        <!-- Output Section -->
+        <div class="bg-[#0a0a0a] border border-white/10 p-6 flex flex-col">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-serif text-white">Generated Code</h2>
+                <button id="copy-btn"
+                    class="text-xs uppercase tracking-widest text-primary hover:text-white transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                </button>
+            </div>
+
+            <textarea id="output-area"
+                class="w-full flex-grow bg-black/50 border border-white/5 p-4 text-sm focus:outline-none" readonly>
+// Generated JSON will appear here...
+            </textarea>
+
+            <div class="mt-6 pt-6 border-t border-white/10">
+                <h3 class="text-sm font-bold text-white/50 uppercase tracking-widest mb-4">How to use</h3>
+                <ol class="list-decimal list-inside text-sm text-white/60 space-y-2">
+                    <li>Fill out the form on the left.</li>
+                    <li>Click <strong>FORGE JSON</strong>.</li>
+                    <li>Click <strong>COPY</strong> to grab the code.</li>
+                    <li>Open <code class="text-primary">assets/js/artifacts.js</code>.</li>
+                    <li>Paste inside the <code class="text-primary">artifactsData</code> array (don't forget the
+                        comma!).</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('generator-form');
+        const outputArea = document.getElementById('output-area');
+        const copyBtn = document.getElementById('copy-btn');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get values
+            const id = document.getElementById('id').value.trim();
+            const title = document.getElementById('title').value.trim();
+            const category = document.getElementById('category').value;
+            const price = document.getElementById('price').value.trim();
+            const tags = document.getElementById('tags').value.trim();
+            const description = document.getElementById('description').value.trim();
+
+            // Process images (split by new line, filter empty)
+            const imagesRaw = document.getElementById('images').value;
+            const images = imagesRaw.split('\n').map(img => img.trim()).filter(img => img.length > 0);
+
+            // Construct Object
+            // We format it as a string directly to control indentation perfectly
+            const spotlight = document.getElementById('spotlight').checked;
+
+            const jsonString = `    {
+        id: "${id}",
+        title: "${title.replace(/"/g, '\\"')}",
+        category: "${category}",
+        images: [
+${images.map(img => `            "${img}"`).join(',\n')}
+        ],
+        tags: "${tags}",
+        price: "${price}",
+        spotlight: ${spotlight},
+        description: "${description.replace(/"/g, '\\"')}"
+    },`;
+
+            outputArea.value = jsonString;
+        });
+
+        copyBtn.addEventListener('click', () => {
+            outputArea.select();
+            document.execCommand('copy');
+
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Copied!';
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+            }, 2000);
+        });
+
+        // Auto-generate random ID on load for convenience
+        document.getElementById('id').value = Math.floor(2000 + Math.random() * 9000);
+    </script>
+</body>
+
+</html>
