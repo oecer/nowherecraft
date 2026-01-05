@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="assets/js/translations.js"></script>
     <script src="assets/js/components.js"></script>
     <script src="assets/js/artifacts.js"></script>
     <script src="assets/js/script.js"></script>
@@ -61,17 +62,18 @@
                     <!-- Breadcrumbs -->
                     <nav
                         class="flex justify-center items-center text-xs uppercase tracking-widest text-gray-500 mb-8 space-x-2 font-serif opacity-60">
-                        <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+                        <a href="index.html" class="hover:text-primary transition-colors" data-i18n="nav_home">Home</a>
                         <span>/</span>
-                        <span class="text-primary">Artifacts</span>
+                        <span class="text-primary" data-i18n="nav_artifacts">Artifacts</span>
                     </nav>
 
                     <div class="gallery-badge-icon mx-auto mb-4">
                         <img src="assets/images/Icon_512x512px.png" alt="Nowhere Craft Icon"
                             class="w-12 h-12 object-contain filter-primary opacity-80 mx-auto">
                     </div>
-                    <span class="gallery-badge filter-text-glow">The Complete Archives</span>
-                    <h2 class="gallery-title mt-4">All Artifacts</h2>
+                    <span class="gallery-badge filter-text-glow" data-i18n="artifacts_page_title">The Complete
+                        Archives</span>
+                    <h2 class="gallery-title mt-4" data-i18n="artifacts_page_subtitle">All Artifacts</h2>
 
                     <!-- Search & Filter -->
                     <div class="w-full max-w-4xl mx-auto mt-12 px-4">
@@ -89,7 +91,8 @@
 
                     <div class="gallery-divider mx-auto mt-6 justify-center">
                         <span class="gallery-subtitle uppercase tracking-[0.25em] md:text-sm filter-text-glow">
-                            Showing <span id="artifact-count" class="text-primary">--</span> Items
+                            <span data-i18n="showing_text">Showing</span> <span id="artifact-count"
+                                class="text-primary">--</span> <span data-i18n="items_text">Items</span>
                         </span>
                     </div>
                 </div>
@@ -106,7 +109,8 @@
                         class="group relative px-8 py-3 overflow-hidden border border-primary/30 text-primary transition-all duration-300 hover:border-primary hover:bg-primary/5">
                         <span class="material-symbols-outlined align-middle mr-2 text-sm">west</span>
                         <span
-                            class="relative text-sm uppercase font-serif font-bold tracking-[0.2em] group-hover:tracking-[0.3em] transition-all align-middle">Return
+                            class="relative text-sm uppercase font-serif font-bold tracking-[0.2em] group-hover:tracking-[0.3em] transition-all align-middle"
+                            data-i18n="back_home">Return
                             to Home</span>
                     </a>
                 </div>

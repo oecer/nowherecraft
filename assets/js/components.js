@@ -22,14 +22,14 @@ const NowhereComponents = {
                     </a>
                     <div class="header-nav">
                         <div class="nav-group">
-                            <a class="nav-link" href="${storyLink}">The Ritual</a>
-                            <a class="nav-link ${artifactsClass}" href="${artifactsHref}">Artifacts</a>
+                            <a class="nav-link" href="${storyLink}" data-i18n="nav_ritual">The Ritual</a>
+                            <a class="nav-link ${artifactsClass}" href="${artifactsHref}" data-i18n="nav_artifacts">Artifacts</a>
                         </div>
                         <a class="group btn-acquire" href="${acquireLink}">
                             <span
                                 class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-primary/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></span>
                             <span
-                                class="relative text-sm uppercase font-serif font-bold tracking-[0.25em] group-hover:tracking-[0.3em] transition-all text-primary">Acquire</span>
+                                class="relative text-sm uppercase font-serif font-bold tracking-[0.25em] group-hover:tracking-[0.3em] transition-all text-primary" data-i18n="nav_acquire">Acquire</span>
                         </a>
                     </div>
                     <div class="md:hidden text-primary cursor-pointer border border-primary/30 p-1 rounded"
@@ -50,14 +50,18 @@ const NowhereComponents = {
                                 class="footer-brand-img" />
                         </a>
                     </div>
-                    <p class="footer-copyright">© 2023. Handcrafted in the Shadows of Nowhere.</p>
+                    <p class="footer-copyright" data-i18n="footer_made">© 2023. Handcrafted in the Shadows of Nowhere.</p>
                 </div>
                 <div class="footer-links">
-                    <a class="footer-link-item" href="#">Instagram</a>
-                    <a class="footer-link-item" href="#">Twitter</a>
-                    <a class="footer-link-item" href="#">Contact</a>
-                </div>
-            </div>`;
+                    <a class="footer-link-item" href="#" data-i18n="footer_links_instagram">Instagram</a>
+                    <a class="footer-link-item" href="#" data-i18n="footer_links_twitter">Twitter</a>
+                    <a class="footer-link-item" href="#" data-i18n="footer_links_contact">Contact</a>
+                <div class="w-px h-4 bg-primary/30 mx-2 hidden md:block"></div>
+                <button onclick="window.toggleLanguage()" class="footer-link-item hover:text-primary transition-colors font-serif" id="lang-toggle">
+                    <span id="lang-display">EN / TR</span>
+                </button>
+            </div>
+        </div>`;
     },
 
     getMobileNavHTML: (activePage) => {
@@ -71,9 +75,15 @@ const NowhereComponents = {
             <button class="absolute top-6 right-6 text-primary p-2" id="close-mobile-menu">
                 <span class="material-symbols-outlined text-3xl">close</span>
             </button>
-            <a class="mobile-nav-link" href="${storyLink}" onclick="closeMobileMenu()">The Ritual</a>
-            <a class="mobile-nav-link ${artifactsClass}" href="${artifactsHref}" onclick="closeMobileMenu()">Artifacts</a>
-            <a class="mobile-nav-link" href="${acquireLink}" onclick="closeMobileMenu()">Acquire</a>`;
+            <a class="mobile-nav-link" href="${storyLink}" onclick="closeMobileMenu()" data-i18n="nav_ritual">The Ritual</a>
+            <a class="mobile-nav-link ${artifactsClass}" href="${artifactsHref}" onclick="closeMobileMenu()" data-i18n="nav_artifacts">Artifacts</a>
+            <a class="mobile-nav-link" href="${acquireLink}" onclick="closeMobileMenu()" data-i18n="nav_acquire">Acquire</a>
+            <div class="mt-8 border-t border-primary/20 pt-8 flex justify-center">
+                 <button onclick="window.toggleLanguage()" class="text-primary font-serif tracking-widest text-lg hover:text-white transition-colors" id="mobile-lang-toggle">
+                    <span id="mobile-lang-display">EN / TR</span>
+                </button>
+            </div>
+            `;
     },
 
     render: () => {
@@ -97,6 +107,11 @@ const NowhereComponents = {
         const mobileNavEl = document.getElementById('mobile-nav');
         if (mobileNavEl) {
             mobileNavEl.innerHTML = NowhereComponents.getMobileNavHTML(activePage);
+        }
+
+        // Trigger translation update after rendering components
+        if (typeof updateTranslations === 'function') {
+            updateTranslations();
         }
     }
 };

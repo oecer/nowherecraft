@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="assets/js/translations.js"></script>
     <script src="assets/js/components.js"></script>
     <script src="assets/js/artifacts.js"></script>
     <script src="assets/js/script.js"></script>
@@ -51,7 +52,7 @@
                             class="hero-icon-img hero-icon-divider-filter opacity-85" />
                         <span class="text-2xl font-gothic">~</span>
                     </div>
-                    <h2 class="hero-subtitle">
+                    <h2 class="hero-subtitle" data-i18n="hero_subtitle">
                         "Forged in shadow. Stitched by hand. Heritage quality <strong>Leather Goods</strong> that darken
                         with
                         time."
@@ -62,7 +63,8 @@
                         class="absolute inset-0 w-0 bg-primary transition-all duration-[250ms] ease-out group-hover:w-full opacity-10">
                     </div>
                     <span
-                        class="relative text-sm uppercase font-serif font-bold tracking-[0.3em] group-hover:text-white transition-colors">View
+                        class="relative text-sm uppercase font-serif font-bold tracking-[0.3em] group-hover:text-white transition-colors"
+                        data-i18n="hero_cta">View
                         Artifacts</span>
                     <div
                         class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
@@ -90,21 +92,23 @@
                                     <div class="ritual-header">
                                         <img src="assets/images/Icon_32x32px.png" alt="NowhereCraft Icon"
                                             class="w-5 h-5 animate-pulse hero-icon-divider-filter">
-                                        <span class="uppercase tracking-[0.4em] text-sm font-bold font-serif">The
+                                        <span class="uppercase tracking-[0.4em] text-sm font-bold font-serif"
+                                            data-i18n="ritual_header">The
                                             Ritual</span>
                                     </div>
                                     <h2 class="ritual-title">
-                                        Obsession in<br /><span>Every Stitch</span>
+                                        <span data-i18n="ritual_title_1">Obsession in</span><br /><span
+                                            class="text-glow" data-i18n="ritual_title_2">Every Stitch</span>
                                     </h2>
                                     <div class="ritual-accent-line"></div>
-                                    <p class="ritual-description">
+                                    <p class="ritual-description" data-i18n="ritual_description">
                                         Every artifact begins as raw, unyielding hide. I select each piece by hand,
                                         seeking the <span>scars and grain</span> that tell
                                         a violent, beautiful story.
                                         Cut by blade, pierced by awl, and stitched with wax thread in a ritual machines
                                         cannot replicate.
                                     </p>
-                                    <p class="ritual-subtext">
+                                    <p class="ritual-subtext" data-i18n="ritual_subtext">
                                         This is not mere commerce; it is alchemy. In a disposable world, I forge items
                                         of permanence that will haunt your pocket and age with a dark patina.
                                     </p>
@@ -112,11 +116,13 @@
                                 <div class="ritual-stats-grid">
                                     <div class="ritual-stat-item">
                                         <span class="ritual-stat-number">X</span>
-                                        <span class="ritual-stat-label">Years of Craft</span>
+                                        <span class="ritual-stat-label" data-i18n="ritual_stat_years">Years of
+                                            Craft</span>
                                     </div>
                                     <div class="ritual-stat-item">
                                         <span class="ritual-stat-number">∞</span>
-                                        <span class="ritual-stat-label">Lifetime Bond</span>
+                                        <span class="ritual-stat-label" data-i18n="ritual_stat_bond">Lifetime
+                                            Bond</span>
                                     </div>
                                 </div>
                             </div>
@@ -133,12 +139,12 @@
                 </div>
                 <div class="gallery-inner">
                     <div class="gallery-header">
-                        <span class="gallery-badge filter-text-glow">The Artifacts</span>
-                        <h2 class="gallery-title">Dark Collection</h2>
+                        <span class="gallery-badge filter-text-glow" data-i18n="gallery_badge">The Artifacts</span>
+                        <h2 class="gallery-title" data-i18n="gallery_title">Dark Collection</h2>
                         <div class="gallery-divider">
                             <div class="gallery-divider-line"></div>
-                            <span
-                                class="gallery-subtitle uppercase tracking-[0.25em] md:text-sm filter-text-glow">Handcrafted
+                            <span class="gallery-subtitle uppercase tracking-[0.25em] md:text-sm filter-text-glow"
+                                data-i18n="gallery_subtitle">Handcrafted
                                 Leather Goods</span>
                             <div class="gallery-divider-line"></div>
                         </div>
@@ -162,7 +168,8 @@
                         <a href="artifacts.html"
                             class="group relative px-8 py-3 overflow-hidden border border-primary/30 text-primary transition-all duration-300 hover:border-primary hover:bg-primary/5">
                             <span
-                                class="relative text-sm uppercase font-serif font-bold tracking-[0.2em] group-hover:tracking-[0.3em] transition-all">See
+                                class="relative text-sm uppercase font-serif font-bold tracking-[0.2em] group-hover:tracking-[0.3em] transition-all"
+                                data-i18n="gallery_cta">See
                                 All Artifacts</span>
                             <div
                                 class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
@@ -185,7 +192,7 @@
                             <img src="assets/images/Icon_512x512px.png" alt="Nowhere Craft Logo"
                                 class="filter-text-glow w-full h-full object-contain">
                         </div>
-                        <h2 class="shop-title text-glow">Claim Your Legacy</h2>
+                        <h2 class="shop-title text-glow" data-i18n="shop_title">Claim Your Legacy</h2>
                         <div class="flex items-center justify-center gap-2 mb-6">
                             <div class="flex text-primary">
                                 <span class="material-symbols-outlined text-sm"
@@ -199,36 +206,40 @@
                                 <span class="material-symbols-outlined text-sm"
                                     style="font-variation-settings: 'FILL' 1">star</span>
                             </div>
-                            <span class="text-xs text-gray-400 font-sans tracking-widest uppercase">56 Artifacts
-                                Forged</span>
+                            <span class="text-xs text-gray-400 font-sans tracking-widest uppercase"><span
+                                    data-i18n="shop_forged_count" data-prefix="56 ">56 Artifacts
+                                    Forged</span></span>
                         </div>
-                        <p class="shop-desc">
+                        <p class="shop-desc" data-i18n="shop_desc">
                             Each piece is summoned into existence upon order. Secure your place in the queue before the
                             darkness closes in.
-                            <br />
+                        </p>
+                        <div class="text-center mt-2 mb-4">
                             <span class="shop-badge">
                                 <span class="material-symbols-outlined text-sm">hourglass_empty</span>
-                                Forging time: 2-3 weeks
+                                <span data-i18n="shop_time">Forging time: 2-3 weeks</span>
                             </span>
-                        </p>
+                        </div>
+
                         <div class="shop-buttons">
                             <button class="group/btn btn-shop btn-shop-primary">
                                 <div
                                     class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
                                 </div>
                                 <span class="material-symbols-outlined relative z-10">storefront</span>
-                                <span
-                                    class="uppercase tracking-[0.2em] text-sm relative z-10 font-gothic font-bold">Shopier</span>
+                                <span class="uppercase tracking-[0.2em] text-sm relative z-10 font-gothic font-bold"
+                                    data-i18n="shop_btn_shopier">Shopier</span>
                             </button>
                             <button class="group/btn btn-shop btn-shop-primary">
                                 <span
                                     class="material-symbols-outlined group-hover/btn:rotate-12 transition-transform">palette</span>
-                                <span class="uppercase tracking-[0.2em] text-sm font-gothic font-bold">Etsy</span>
+                                <span class="uppercase tracking-[0.2em] text-sm font-gothic font-bold"
+                                    data-i18n="shop_btn_etsy">Etsy</span>
                             </button>
                         </div>
                         <div class="shop-footer">
                             <span class="material-symbols-outlined text-sm">lock</span>
-                            Encrypted Transaction
+                            <span data-i18n="shop_secure">Encrypted Transaction</span>
                         </div>
                     </div>
                 </div>

@@ -32,6 +32,7 @@ tailwind.config = {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Render Components first if available
+    // Render Components first if available
     if (typeof NowhereComponents !== 'undefined') {
         NowhereComponents.render();
     }
