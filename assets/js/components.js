@@ -50,7 +50,7 @@ const NowhereComponents = {
                                 class="footer-brand-img" />
                         </a>
                     </div>
-                    <p class="footer-copyright" data-i18n="footer_made">© 2023. Handcrafted in the Shadows of Nowhere.</p>
+                    <p class="footer-copyright" data-i18n="footer_made">© 2024. Handcrafted in the Shadows of Nowhere.</p>
                 </div>
                 <div class="footer-links">
                     <a class="footer-link-item" href="#" data-i18n="footer_links_instagram">Instagram</a>
