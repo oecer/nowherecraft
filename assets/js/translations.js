@@ -1,7 +1,33 @@
 // Global Language State
-window.currentLanguage = localStorage.getItem('nowhere_lang');
-if (window.currentLanguage !== 'en' && window.currentLanguage !== 'tr') {
-    window.currentLanguage = 'en';
+const savedLang = localStorage.getItem('nowhere_lang');
+
+if (savedLang === 'en' || savedLang === 'tr') {
+    window.currentLanguage = savedLang;
+} else {
+    // No preference saved, try to detect
+    // 1. Check Browser Language
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang && String(browserLang).toLowerCase().startsWith('tr')) {
+        window.currentLanguage = 'tr';
+    } else {
+        // Default to EN
+        window.currentLanguage = 'en';
+
+        // 2. Check IP Location (Async)
+        // We only check this if browser language wasn't Turkish
+        fetch('https://ipapi.co/country/')
+            .then(res => res.text())
+            .then(countryCode => {
+                if (countryCode && countryCode.trim() === 'TR') {
+                    console.log('Detected TR IP, switching language...');
+                    window.currentLanguage = 'tr';
+                    if (typeof window.updateTranslations === 'function') {
+                        window.updateTranslations();
+                    }
+                }
+            })
+            .catch(e => console.log('Auto-language detection failed:', e));
+    }
 }
 
 window.translations = {
