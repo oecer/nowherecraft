@@ -4,22 +4,25 @@ const savedLang = localStorage.getItem('nowhere_lang');
 if (savedLang === 'en' || savedLang === 'tr') {
     window.currentLanguage = savedLang;
 } else {
-    // No preference saved, try to detect
+    // Logic: Display in TR if (Browser is TR OR Location is TR). Otherwise EN.
+
     // 1. Check Browser Language
     const browserLang = navigator.language || navigator.userLanguage;
-    if (browserLang && String(browserLang).toLowerCase().startsWith('tr')) {
+    const isBrowserTr = browserLang && String(browserLang).toLowerCase().startsWith('tr');
+
+    if (isBrowserTr) {
         window.currentLanguage = 'tr';
     } else {
-        // Default to EN
+        // Browser is not TR, so default to EN for now
         window.currentLanguage = 'en';
 
         // 2. Check IP Location (Async)
-        // We only check this if browser language wasn't Turkish
+        // If user is in Turkey (even if browser is EN), switch back to TR
         fetch('https://ipapi.co/country/')
             .then(res => res.text())
             .then(countryCode => {
                 if (countryCode && countryCode.trim() === 'TR') {
-                    console.log('Detected TR IP, switching language...');
+                    console.log('Detected TR IP, switching language to TR...');
                     window.currentLanguage = 'tr';
                     if (typeof window.updateTranslations === 'function') {
                         window.updateTranslations();
