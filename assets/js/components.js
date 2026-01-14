@@ -22,7 +22,7 @@ const NowhereComponents = {
                     </a>
                     <div class="header-nav">
                         <div class="nav-group">
-                            <a class="nav-link" href="${storyLink}" data-i18n="nav_ritual">Ayin</a>
+                            <a class="nav-link" href="${storyLink}" data-i18n="nav_ritual">Manifesto</a>
                             <a class="nav-link ${artifactsClass}" href="${artifactsHref}" data-i18n="nav_artifacts">Eserler</a>
                         </div>
                         <a class="group btn-acquire" href="${acquireLink}">
@@ -75,7 +75,7 @@ const NowhereComponents = {
             <button class="absolute top-6 right-6 text-primary p-2" id="close-mobile-menu">
                 <span class="material-symbols-outlined text-3xl">close</span>
             </button>
-            <a class="mobile-nav-link" href="${storyLink}" onclick="closeMobileMenu()" data-i18n="nav_ritual">Ayin</a>
+            <a class="mobile-nav-link" href="${storyLink}" onclick="closeMobileMenu()" data-i18n="nav_ritual">Manifesto</a>
             <a class="mobile-nav-link ${artifactsClass}" href="${artifactsHref}" onclick="closeMobileMenu()" data-i18n="nav_artifacts">Eserler</a>
             <a class="mobile-nav-link" href="${acquireLink}" onclick="closeMobileMenu()" data-i18n="nav_acquire">Sahip Ol</a>
             <div class="mt-8 border-t border-primary/20 pt-8 flex justify-center">
