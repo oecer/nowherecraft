@@ -37,25 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
         NowhereComponents.render();
     }
 
-    const scrollContainer = document.getElementById('gallery-scroll');
-    const prevBtn = document.getElementById('gallery-prev');
-    const nextBtn = document.getElementById('gallery-next');
-
-    if (scrollContainer && prevBtn && nextBtn) {
-        // Render artifacts if the function exists
-        if (typeof renderArtifacts === 'function') {
-            console.log('Rendering artifacts...');
-            renderArtifacts('gallery-scroll', 10);
+    // Gallery Rendering
+    if (typeof renderArtifacts === 'function') {
+        if (document.getElementById('gallery-classic')) {
+            renderArtifacts('gallery-classic', 'classic');
         }
-
-        prevBtn.addEventListener('click', () => {
-            scrollContainer.scrollBy({ left: -340, behavior: 'smooth' });
-        });
-
-        nextBtn.addEventListener('click', () => {
-            scrollContainer.scrollBy({ left: 340, behavior: 'smooth' });
-        });
+        if (document.getElementById('gallery-dark')) {
+            renderArtifacts('gallery-dark', 'dark');
+        }
+        if (document.getElementById('gallery-oldschool')) {
+            renderArtifacts('gallery-oldschool', 'oldschool');
+        }
     }
+
 
     // Mobile Menu Logic
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');

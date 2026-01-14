@@ -45,12 +45,15 @@ window.translations = {
         ritual_header: "The Ritual",
         ritual_title_1: "Obsession in",
         ritual_title_2: "Every Stitch",
-        ritual_description: "Every artifact begins as raw, unyielding hide. I select each piece by hand, seeking the <span>scars and grain</span> that tell a violent, beautiful story. Cut by blade, pierced by awl, and stitched with wax thread in a ritual machines cannot replicate.",
-        ritual_subtext: "This is not mere commerce; it is alchemy. In a disposable world, I forge items of permanence that will haunt your pocket and age with a dark patina.",
+        ritual_description: "Nowhere Craft is a handcrafted brand standing against the soullessness of mass production. Leather and metal are produced slowly and by hand; every piece carries the traces of street culture, rock’n roll spirit, and a timeless design philosophy.<br/><br/>Every product is made individually. Cut, dyed, shaped. During this process, marks may remain, and color tones may change. These differences are seen not as flaws, but as details that give each piece its character.",
+        ritual_subtext: "The materials used are living structures. Leather darkens over time, metal takes on marks. Products are made not to stay new, but to settle in as they are used.<br/><br/>Nowhere Craft represents a stance more than a place. Silent, simple, and permanent.",
         ritual_stat_years: "Years of Craft",
         ritual_stat_bond: "Lifetime Bond",
         gallery_badge: "The Artifacts",
-        gallery_title: "Dark Collection",
+        gallery_title: "Featured Collections",
+        collection_classic: "Classic Collection",
+        collection_dark: "Dark Collection",
+        collection_oldschool: "Oldschool Collection",
         gallery_subtitle: "Handcrafted Leather Goods",
         gallery_cta: "See All Artifacts",
         shop_title: "Claim Your Legacy",
@@ -77,7 +80,9 @@ window.translations = {
         category_keyholder: "Keyholder",
         back_home: "Return to Home",
         showing_text: "Showing",
-        items_text: "Items"
+        items_text: "Items",
+        filter_collections: "Collections",
+        filter_categories: "Categories"
     },
     tr: {
         nav_home: "Ana Sayfa",
@@ -89,12 +94,15 @@ window.translations = {
         ritual_header: "Ayin",
         ritual_title_1: "Her İlmekte",
         ritual_title_2: "Saplantı",
-        ritual_description: "Her eser, ham ve boyun eğmez bir deri parçası olarak doğar. Şiddetli ve güzel bir hikayeyi anlatan <span>yara izlerini ve dokuyu</span> arayarak her parçayı elle seçiyorum. Bıçakla kesilen, bizle delinen ve makinelerin taklit edemeyeceği bir ayinle, mumlu iple dikilen parçalar.",
-        ritual_subtext: "Bu sadece ticaret değil, bu bir simya. Kullan-at dünyasında, cebinize musallat olacak ve karanlık bir patina ile yaşlanacak kalıcı eserler dövüyorum.",
+        ritual_description: "Nowhere Craft, seri üretimin ruhsuzluğuna karşı duran bir el işçiliği markasıdır. Deri ve metal, elde ve yavaş üretilir; her parça sokak kültürünün, rock’n roll ruhunun ve zamansız tasarım anlayışının izlerini taşır.<br/><br/>Her ürün tek tek yapılır. Kesilir, boyanır, şekillenir. Bu süreçte iz kalabilir, renk tonu değişebilir. Bu farklar kusur olarak değil, her parçaya karakter veren detaylar olarak görülür.",
+        ritual_subtext: "Kullanılan malzemeler yaşayan yapılardır. Deri zamanla koyulaşır, metal iz alır. Ürünler yeni kalması için değil, kullanıldıkça kendine oturması için üretilir.<br/><br/>Nowhere Craft bir yerden çok bir duruşu temsil eder. Sessiz, sade ve kalıcı.",
         ritual_stat_years: "Yıllık Zanaat",
         ritual_stat_bond: "Ömürlük Bağ",
         gallery_badge: "Eserler",
-        gallery_title: "Karanlık Koleksiyon",
+        gallery_title: "Öne Çıkan Koleksiyonlar",
+        collection_classic: "Klasik Koleksiyon",
+        collection_dark: "Dark Koleksiyon",
+        collection_oldschool: "Oldschool Koleksiyon",
         gallery_subtitle: "El Yapımı Deri Eserler",
         gallery_cta: "Tüm Eserleri Gör",
         shop_title: "Mirasını Sahiplen",
@@ -108,11 +116,11 @@ window.translations = {
         footer_links_instagram: "Instagram",
         footer_links_twitter: "Twitter",
         footer_links_contact: "İletişim",
-        artifacts_page_title: "Arşivler",
+        artifacts_page_title: "Eserler",
         artifacts_page_subtitle: "Tam Koleksiyon",
         filter_all: "Tümü",
         search_placeholder: "Eser ara...",
-        no_results: "Arşivlerde eser bulunamadı.",
+        no_results: "Eser bulunamadı.",
         modal_price: "Bedel",
         modal_inquire: "Sahiplenmek İçin Yaz",
         category_wallet: "Cüzdan",
@@ -121,7 +129,9 @@ window.translations = {
         category_keyholder: "Anahtarlık",
         back_home: "Ana Sayfaya Dön",
         showing_text: "Görüntülenen:",
-        items_text: "Eser"
+        items_text: "Eser",
+        filter_collections: "Koleksiyonlar",
+        filter_categories: "Türler"
     }
 };
 
@@ -176,14 +186,20 @@ window.updateTranslations = function () {
         }
 
         if (typeof window.renderArtifacts === 'function') {
-            const containerId = document.getElementById('all-artifacts-grid') ? 'all-artifacts-grid' : 'gallery-scroll';
-            if (document.getElementById(containerId)) {
-                window.renderArtifacts(containerId);
+            // Check for index page collections
+            if (document.getElementById('gallery-classic')) {
+                window.renderArtifacts('gallery-classic', 'classic');
             }
-        } else if (typeof renderArtifacts === 'function') {
-            const containerId = document.getElementById('all-artifacts-grid') ? 'all-artifacts-grid' : 'gallery-scroll';
-            if (document.getElementById(containerId)) {
-                renderArtifacts(containerId);
+            if (document.getElementById('gallery-dark')) {
+                window.renderArtifacts('gallery-dark', 'dark');
+            }
+            if (document.getElementById('gallery-oldschool')) {
+                window.renderArtifacts('gallery-oldschool', 'oldschool');
+            }
+
+            // Check for artifacts page grid
+            if (document.getElementById('all-artifacts-grid')) {
+                window.renderArtifacts('all-artifacts-grid');
             }
         }
 

@@ -4,6 +4,7 @@ const artifactsData = [
         title: "Cognac Gator Bifold",
         title_tr: "Konyak Timsah Dokulu Cüzdan",
         category: "Wallet",
+        collection: "classic",
         images: ["assets/images/prducts/1000022365.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -16,6 +17,7 @@ const artifactsData = [
         title: "Midnight Distressed Cardholder",
         title_tr: "Gece Yarısı Eskitme Kartlık",
         category: "Cardholder",
+        collection: "dark",
         images: [
             "assets/images/prducts/1000022724.jpg",
             "assets/images/prducts/1000022724 2.jpg"
@@ -31,6 +33,7 @@ const artifactsData = [
         title: "Gator Texture Trio",
         title_tr: "Timsah Dokulu Üçlü Set",
         category: "Bundle",
+        collection: "oldschool",
         images: ["assets/images/prducts/1000022725.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -43,6 +46,7 @@ const artifactsData = [
         title: "Abyssal Blue Gator Wallet",
         title_tr: "Abisal Mavi Timsah Cüzdan",
         category: "Wallet",
+        collection: "dark",
         images: ["assets/images/prducts/1000022726.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -55,6 +59,7 @@ const artifactsData = [
         title: "Stacked Gator Collection",
         title_tr: "Timsah Koleksiyonu",
         category: "Bundle",
+        collection: "oldschool",
         images: ["assets/images/prducts/1000022727.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -67,6 +72,7 @@ const artifactsData = [
         title: "Obsidian Keyholder Wallet",
         title_tr: "Obsidyen Anahtarlı Cüzdan",
         category: "Keyholder",
+        collection: "dark",
         images: ["assets/images/prducts/1000022728.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -79,6 +85,7 @@ const artifactsData = [
         title: "Rustic Keyholder Wallet",
         title_tr: "Rustik Anahtarlı Cüzdan",
         category: "Keyholder",
+        collection: "classic",
         images: ["assets/images/prducts/1000022729.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -91,6 +98,7 @@ const artifactsData = [
         title: "Minimalist Fan Collection",
         title_tr: "Minimalist Koleksiyonu",
         category: "Bundle",
+        collection: "oldschool",
         images: ["assets/images/prducts/1000022806.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -103,6 +111,7 @@ const artifactsData = [
         title: "Heritage Snap Cardholder",
         title_tr: "Miras Çıtçıtlı Kartlık",
         category: "Cardholder",
+        collection: "classic",
         images: [
             "assets/images/prducts/1000022807.jpg",
             "assets/images/prducts/1000022807 2.jpg"
@@ -118,6 +127,7 @@ const artifactsData = [
         title: "Snap Cardholder Spectrum",
         title_tr: "Çıtçıtlı Kartlık Spektrumu",
         category: "Cardholder",
+        collection: "oldschool",
         images: ["assets/images/prducts/1000022808.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -130,6 +140,7 @@ const artifactsData = [
         title: "Stacked Snap Wallets",
         title_tr: "Çıtçıtlı Cüzdan Seti",
         category: "Bundle",
+        collection: "oldschool",
         images: ["assets/images/prducts/1000022809.jpg"],
         tags: "Genuine Leather • Handcrafted",
         tags_tr: "Hakiki Deri • El Yapımı",
@@ -142,6 +153,7 @@ const artifactsData = [
         title: "Shadow Black Bifold",
         title_tr: "Gölge Siyahı İki Katlı Cüzdan",
         category: "Wallet",
+        collection: "dark",
         images: [
             "assets/images/prducts/1000022832.jpg",
             "assets/images/prducts/1000022833.jpg",
@@ -158,6 +170,7 @@ const artifactsData = [
 ];
 
 let currentCategory = 'All';
+let currentCollection = 'All';
 let searchQuery = '';
 
 function getLocalizedStr(item, field) {
@@ -168,9 +181,15 @@ function getLocalizedStr(item, field) {
 }
 
 function getLocalizedCategory(category) {
-    if (category === 'All') return window.translations[window.currentLanguage].filter_all || 'All';
+    if (category === 'All') return (window.translations && window.translations[window.currentLanguage] && window.translations[window.currentLanguage].filter_all) || 'All';
     const key = `category_${category.toLowerCase()}`;
-    return window.translations[window.currentLanguage][key] || category;
+    return (window.translations && window.translations[window.currentLanguage] && window.translations[window.currentLanguage][key]) || category;
+}
+
+function getLocalizedCollection(collection) {
+    if (collection === 'All') return (window.translations && window.translations[window.currentLanguage] && window.translations[window.currentLanguage].filter_all) || 'All';
+    const key = `collection_${collection.toLowerCase()}`;
+    return (window.translations && window.translations[window.currentLanguage] && window.translations[window.currentLanguage][key]) || collection;
 }
 
 function createArtifactCard(artifact) {
@@ -231,12 +250,21 @@ function createArtifactCard(artifact) {
     return card;
 }
 
-function renderArtifacts(containerId) {
+function renderArtifacts(containerId, collectionFilter = null) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
     // Filter Logic
     let filteredItems = artifactsData;
+
+    // Local collection filter (used on home page)
+    if (collectionFilter) {
+        filteredItems = filteredItems.filter(item => item.collection === collectionFilter);
+    }
+    // Global collection filter (used on artifacts page)
+    else if (currentCollection !== 'All') {
+        filteredItems = filteredItems.filter(item => item.collection === currentCollection);
+    }
 
     if (currentCategory !== 'All') {
         filteredItems = filteredItems.filter(item => item.category === currentCategory);
@@ -246,22 +274,24 @@ function renderArtifacts(containerId) {
         const query = searchQuery.toLowerCase();
         filteredItems = filteredItems.filter(item => {
             const title = item.title.toLowerCase();
-            const tags = item.tags.toLowerCase();
+            const tags = (item.tags || '').toLowerCase();
             const titleTr = (item.title_tr || '').toLowerCase();
             const tagsTr = (item.tags_tr || '').toLowerCase();
             return title.includes(query) || tags.includes(query) || titleTr.includes(query) || tagsTr.includes(query);
         });
     }
 
-    // Update Count
-    const countEl = document.getElementById('artifact-count');
-    if (countEl) countEl.textContent = filteredItems.length;
+    // Update Count (only if global grid)
+    if (containerId === 'all-artifacts-grid') {
+        const countEl = document.getElementById('artifact-count');
+        if (countEl) countEl.textContent = filteredItems.length;
+    }
 
     // Render
     container.innerHTML = '';
 
     if (filteredItems.length === 0) {
-        const noResultsText = window.translations[window.currentLanguage].no_results || "No artifacts found.";
+        const noResultsText = (window.translations && window.translations[window.currentLanguage] && window.translations[window.currentLanguage].no_results) || "No artifacts found.";
         container.innerHTML = `
             <div class="col-span-full py-20 text-center opacity-50">
                 <span class="material-symbols-outlined text-4xl mb-4">search_off</span>
@@ -281,27 +311,48 @@ function renderArtifacts(containerId) {
 }
 window.renderArtifacts = renderArtifacts;
 
+
 // --- Filter Logic ---
 
 function setupFilters() {
     const filterContainer = document.getElementById('artifact-filters');
     if (!filterContainer) return;
 
-    // Get unique categories
+    // Get unique categories and collections
     const categories = ['All', ...new Set(artifactsData.map(item => item.category))];
+    const collections = ['All', ...new Set(artifactsData.map(item => item.collection))];
 
-    filterContainer.innerHTML = categories.map(cat => `
-        <button onclick="setCategory('${cat}')" 
-                class="filter-btn ${cat === currentCategory ? 'active' : ''}">
-            ${getLocalizedCategory(cat)}
-        </button>
-    `).join('');
+    filterContainer.innerHTML = `
+        <div class="flex flex-col gap-4 w-full">
+            <!-- Collection Filters -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="text-[10px] uppercase tracking-widest text-gray-500 w-full mb-1" data-i18n="filter_collections">Koleksiyonlar</span>
+                ${collections.map(col => `
+                    <button onclick="setCollection('${col}')" 
+                            class="filter-btn text-[11px] py-1.5 px-4 ${col === currentCollection ? 'active' : ''}">
+                        ${getLocalizedCollection(col)}
+                    </button>
+                `).join('')}
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <span class="text-[10px] uppercase tracking-widest text-gray-500 w-full mb-1" data-i18n="filter_categories">Türler</span>
+                ${categories.map(cat => `
+                    <button onclick="setCategory('${cat}')" 
+                            class="filter-btn text-[11px] py-1.5 px-4 ${cat === currentCategory ? 'active' : ''}">
+                        ${getLocalizedCategory(cat)}
+                    </button>
+                `).join('')}
+            </div>
+        </div>
+    `;
 
     // Search Listener
     const searchInput = document.getElementById('artifact-search');
     if (searchInput) {
         // Update placeholder
-        searchInput.placeholder = window.translations[window.currentLanguage].search_placeholder || "Search artifacts...";
+        searchInput.placeholder = (window.translations && window.translations[window.currentLanguage] && window.translations[window.currentLanguage].search_placeholder) || "Search artifacts...";
 
         // Remove old listeners to avoid duplicates if re-running
         const newSearch = searchInput.cloneNode(true);
@@ -317,16 +368,13 @@ window.setupFilters = setupFilters;
 
 function setCategory(category) {
     currentCategory = category;
+    setupFilters();
+    renderArtifacts('all-artifacts-grid');
+}
 
-    // Update active button state - NEED TO RE-RENDER BUTTONS TO UPDATE LANG IF NEEDED, BUT HERE JUST CLASS
-    // Actually if we switch language, setupFilters() should be called again to translate buttons.
-    // For now, toggleLanguage logic calls renderArtifacts, but setupFilters needs to be called too if on that page.
-    // I will add that to toggleLanguage.
-
-    // Just toggle class for now
-    // Note: This logic assumes buttons are already rendered with correct text.
-    // If we rely on setupFilters() to redraw, this function just sets state and re-renders grid.
-    setupFilters(); // Re-render buttons to ensure correct active state and language.
+function setCollection(collection) {
+    currentCollection = collection;
+    setupFilters();
     renderArtifacts('all-artifacts-grid');
 }
 

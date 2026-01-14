@@ -135,7 +135,7 @@
                 <div class="gallery-inner">
                     <div class="gallery-header">
                         <span class="gallery-badge filter-text-glow" data-i18n="gallery_badge">Eserler</span>
-                        <h2 class="gallery-title" data-i18n="gallery_title">Karanlık Koleksiyon</h2>
+                        <h2 class="gallery-title" data-i18n="gallery_title">Koleksiyonlar</h2>
                         <div class="gallery-divider">
                             <div class="gallery-divider-line"></div>
                             <span class="gallery-subtitle uppercase tracking-[0.25em] md:text-sm filter-text-glow"
@@ -143,22 +143,35 @@
                             <div class="gallery-divider-line"></div>
                         </div>
                     </div>
-                    <div class="hidden md:flex justify-end gap-4 mb-6 w-full max-w-[1024px] px-6 md:px-0 mx-auto">
-                        <button id="gallery-prev"
-                            class="w-10 h-10 flex items-center justify-center border border-primary/30 text-primary hover:bg-primary/10 hover:border-primary transition-all rounded-full"
-                            aria-label="Previous items">
-                            <span class="material-symbols-outlined">west</span>
-                        </button>
-                        <button id="gallery-next"
-                            class="w-10 h-10 flex items-center justify-center border border-primary/30 text-primary hover:bg-primary/10 hover:border-primary transition-all rounded-full"
-                            aria-label="Next items">
-                            <span class="material-symbols-outlined">east</span>
-                        </button>
+
+                    <!-- Classic Collection -->
+                    <div class="collection-section mt-12">
+                        <h3 class="text-2xl font-gothic text-primary mb-6 px-6 md:px-0 max-w-[1024px] mx-auto uppercase tracking-widest"
+                            data-i18n="collection_classic">Klasik Koleksiyon</h3>
+                        <div class="artifact-scroll-container pb-8" id="gallery-classic">
+                            <!-- Loaded by artifacts.js -->
+                        </div>
                     </div>
-                    <div class="artifact-scroll-container" id="gallery-scroll">
-                        <!-- Artifacts will be loaded dynamically by assets/js/artifacts.js -->
+
+                    <!-- Dark Collection -->
+                    <div class="collection-section mt-12">
+                        <h3 class="text-2xl font-gothic text-primary mb-6 px-6 md:px-0 max-w-[1024px] mx-auto uppercase tracking-widest"
+                            data-i18n="collection_dark">Dark Koleksiyon</h3>
+                        <div class="artifact-scroll-container pb-8" id="gallery-dark">
+                            <!-- Loaded by artifacts.js -->
+                        </div>
                     </div>
-                    <div class="gallery-footer">
+
+                    <!-- Oldschool Collection -->
+                    <div class="collection-section mt-12">
+                        <h3 class="text-2xl font-gothic text-primary mb-6 px-6 md:px-0 max-w-[1024px] mx-auto uppercase tracking-widest"
+                            data-i18n="collection_oldschool">Oldschool Koleksiyon</h3>
+                        <div class="artifact-scroll-container pb-8" id="gallery-oldschool">
+                            <!-- Loaded by artifacts.js -->
+                        </div>
+                    </div>
+
+                    <div class="gallery-footer mt-12">
                         <a href="artifacts.html"
                             class="group relative px-8 py-3 overflow-hidden border border-primary/30 text-primary transition-all duration-300 hover:border-primary hover:bg-primary/5">
                             <span
