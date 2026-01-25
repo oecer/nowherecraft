@@ -36,7 +36,6 @@ if (savedLang === 'en' || savedLang === 'tr') {
 window.translations = {
     en: {
         nav_home: "Home",
-        // ... (keep existing object content, just validating init)
         nav_ritual: "The Ritual",
         nav_artifacts: "Artifacts",
         nav_acquire: "Acquire",
@@ -84,55 +83,33 @@ window.translations = {
         filter_collections: "Collections",
         filter_categories: "Categories"
     },
-    tr: {
-        nav_home: "Ana Sayfa",
-        nav_ritual: "Manifesto",
-        nav_artifacts: "Eserler",
-        nav_acquire: "Sahip Ol",
-        hero_subtitle: "\"Gölgelerde dövüldü. Ruhla dikildi. Zamanla ruh kazanan miras niteliğinde <strong>Deri Eserler</strong>.\"",
-        hero_cta: "Eserleri İncele",
-        ritual_header: "Manifesto",
-        ritual_title_1: "İlmek İlmek",
-        ritual_title_2: "İşlenen Ruh",
-        ritual_description: "Nowhere Craft, seri üretimin ruhsuzluğuna karşı doğmuş bir el işçiliği markasıdır.<br/><br/>Burada zaman yavaşlar. Deri ve metal, ustanın ellerinde yalnızca şekil değil, ruh kazanır. Sokak kültürünün asi sesi, rock’n roll’un ham enerjisi ve zamansız tasarım anlayışı her parçada yankılanır.<br/><br/>Kesilir, boyanır, şekillendirilir. Üzerinde iz kalır, tonu değişir. Çünkü her iz, bir kusur değil; yaşanmışlığın dili, zamanın deriye fısıldadığı karakterdir.<br/><br/><span>Nowhere, yeni kalmak için değil; kullanıldıkça kendine gelen, dokundukça derinleşen parçalar üretir.</span>",
-        ritual_subtext: "Nowhere Craft bir mekân değil, bir duruştur.<br/>Sessiz.<br/>Sade.<br/>Kalıcı.",
-        ritual_stat_years: "Yıllık Zanaat",
-        ritual_stat_bond: "Ömürlük Bağ",
-        gallery_badge: "Eserler",
-        gallery_title: "Öne Çıkan Koleksiyonlar",
-        collection_classic: "Klasik Koleksiyon",
-        collection_dark: "Dark Koleksiyon",
-        collection_oldschool: "Oldschool Koleksiyon",
-        gallery_subtitle: "El Yapımı Deri Eserler",
-        gallery_cta: "Tüm Eserleri Gör",
-        shop_title: "Mirasını Sahiplen",
-        shop_forged_count: "Eser Dövüldü",
-        shop_desc: "Her parça, sipariş üzerine varlığa çağrılır. Karanlık üzerinize çökmeden sırada yerinizi ayırtın.",
-        shop_time: "Dövülme süresi: 2-3 hafta",
-        shop_secure: "Güvenli Ödeme",
-        shop_btn_shopier: "Shopier",
-        shop_btn_etsy: "Etsy",
-        footer_made: "© 2024. Nowhere'in Gölgelerinde El ile Yapıldı.",
-        footer_links_instagram: "Instagram",
-        footer_links_twitter: "Twitter",
-        footer_links_contact: "İletişim",
-        artifacts_page_title: "Eserler",
-        artifacts_page_subtitle: "Tam Koleksiyon",
-        filter_all: "Tümü",
-        search_placeholder: "Eser ara...",
-        no_results: "Eser bulunamadı.",
-        modal_price: "Bedel",
-        modal_inquire: "Sahiplenmek İçin Yaz",
-        category_wallet: "Cüzdan",
-        category_cardholder: "Kartlık",
-        category_bundle: "Set",
-        category_keyholder: "Anahtarlık",
-        back_home: "Ana Sayfaya Dön",
-        showing_text: "Görüntülenen:",
-        items_text: "Eser",
-        filter_collections: "Koleksiyonlar",
-        filter_categories: "Türler"
-    }
+    tr: {} // Populated dynamically from HTML
+};
+
+// Function to capture default Turkish text from the HTML before any translation happens
+window.captureTurkishTranslations = function () {
+    console.log("Capturing Turkish translations from DOM...");
+    window.translations.tr = window.translations.tr || {};
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const prefix = el.getAttribute('data-prefix') || '';
+
+        // Save the simplified InnerHTML (with prefix removed if present)
+        let content = el.innerHTML;
+
+        // If the content starts with the prefix, strip it for storage
+        if (prefix && content.startsWith(prefix)) {
+            content = content.substring(prefix.length);
+        } else if (prefix && el.textContent.startsWith(prefix)) {
+            // Fallback for text content matches
+            // This is a rough check, usually innerHTML matches best for formatted text
+            // Ideally we shouldn't rely on this unless innerHTML structure is simple
+        }
+
+        window.translations.tr[key] = content;
+    });
+    console.log("Turkish translations captured:", window.translations.tr);
 };
 
 window.updateTranslations = function () {
@@ -215,9 +192,14 @@ window.toggleLanguage = function () {
     window.updateTranslations();
 };
 
-// Initial Translation Update on Load
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', window.updateTranslations);
-} else {
+// Initialize Logic
+window.initLanguage = function () {
+    // 1. Capture the default (Turkish) text from the DOM
+    window.captureTurkishTranslations();
+
+    // 2. Apply the language state
     window.updateTranslations();
-}
+};
+
+// Auto-execution removed to allow explicit calling after components are rendered
+

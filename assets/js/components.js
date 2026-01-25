@@ -109,9 +109,9 @@ const NowhereComponents = {
             mobileNavEl.innerHTML = NowhereComponents.getMobileNavHTML(activePage);
         }
 
-        // Trigger translation update after rendering components
-        if (typeof updateTranslations === 'function') {
-            updateTranslations();
-        }
+        // Translation update is now handled by script.js after initialization
+        // if (typeof updateTranslations === 'function') {
+        //     updateTranslations();
+        // }
     }
 };

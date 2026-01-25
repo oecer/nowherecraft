@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
         NowhereComponents.render();
     }
 
+    // Initialize Translations (Capture TR -> Apply Pref)
+    if (typeof window.initLanguage === 'function') {
+        window.initLanguage();
+    }
+
     // Gallery Rendering
     if (typeof renderArtifacts === 'function') {
         if (document.getElementById('gallery-classic')) {
