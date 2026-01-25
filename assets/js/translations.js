@@ -39,7 +39,7 @@ window.translations = {
         nav_ritual: "The Ritual",
         nav_artifacts: "Artifacts",
         nav_acquire: "Acquire",
-        hero_subtitle: "\"Forged in shadow. Stitched by hand. Heritage quality <strong>Leather Goods</strong> that darken with time.\"",
+        hero_subtitle: "\"Forged in shadow. Stitched by hand. Heritage quality Leather Goods that darken with time.\"",
         hero_cta: "View Artifacts",
         ritual_header: "The Ritual",
         ritual_title_1: "Obsession in",

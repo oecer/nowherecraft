@@ -3,7 +3,7 @@
     --color-primary-hover: #b45309;
     --color-bg-dark: #020202;
     --color-surface-dark: #080808;
-    --font-gothic: 'Cinzel Decorative', cursive;
+    --font-gothic: 'Cinzel Decorative', serif;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Space Grotesk', sans-serif;
 }
@@ -292,6 +292,7 @@ html {
     color: #e5e7eb;
     font-size: 1.25rem;
     font-family: var(--font-serif);
+    font-weight: 400;
     font-style: italic;
     line-height: 1.75;
     max-width: 42rem;
@@ -299,6 +300,7 @@ html {
     margin-right: auto;
     text-align: center;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    letter-spacing: 0.055rem;
 }
 
 @media (min-width: 768px) {
